@@ -32,5 +32,9 @@
         public const string ActualStatus = "Actual";
         public const string DraftStatus = "Draft";
         public const string DeprecatedStatus = "Deprecated";
+
+
+        // --------------- API Constants: --------------------
+        public const string AuthToken = "fe91875ed1ae7033dee2b161a523d7ef6591453c6caba00cdb346d867bb6469a";
     }
 }
