@@ -22,7 +22,7 @@ namespace ProjectVcode.Tests
             Assert.That(InProjectPage.GetCaseName(caseId), Is.EqualTo(testCase.CaseName));
         }
 
-        [TestCase("Test Case Name 3", 4, "TestProject")]
+        [TestCase("Test Case Name 3", 5, "TestProject")]
         [Description("Delete existing case and check its name doesn't exist - positive test")]
         public void InProjectPageTest2(string caseName, int caseId, string projectName)
         {

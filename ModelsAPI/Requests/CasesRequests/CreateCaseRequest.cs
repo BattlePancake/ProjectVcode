@@ -1,4 +1,4 @@
-﻿namespace ProjectVcode.ModelsAPI.Requests
+﻿namespace ProjectVcode.ModelsAPI.Requests.CasesRequests
 {
     internal class CreateCaseRequest
     {

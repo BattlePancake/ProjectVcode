@@ -1,6 +1,6 @@
-﻿using ProjectVcode.ModelsAPI.Requests;
+﻿using ProjectVcode.ModelsAPI.Requests.CasesRequests;
 
-namespace ProjectVcode.Builders
+namespace ProjectVcode.RequestBuilders.CasesBuilders
 {
     internal class UpdateCaseRequestBuilder
     {

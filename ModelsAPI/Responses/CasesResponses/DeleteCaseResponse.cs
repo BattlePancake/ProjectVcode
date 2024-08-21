@@ -1,4 +1,4 @@
-﻿namespace ProjectVcode.ModelsAPI.Responses
+﻿namespace ProjectVcode.ModelsAPI.Responses.CasesResponses
 {
     internal class DeleteCaseResponse
     {

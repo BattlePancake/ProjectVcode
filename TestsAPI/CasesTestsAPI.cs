@@ -1,13 +1,15 @@
 ﻿using RestSharp;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using ProjectVcode.Builders;
-using ProjectVcode.ModelsAPI.Responses;
-using ProjectVcode.API;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
+using ProjectVcode.ModelsAPI.Responses.CasesResponses;
+using ProjectVcode.RequestBuilders.CasesBuilders;
+using ProjectVcode.API;
+using NUnit.Allure.Core;
 
 namespace ProjectVcode.TestsAPI
 {
+    [AllureNUnit]
     internal class CasesTestsAPI
     {
         private const string BaseUrl = "https://api.qase.io/v1/";
@@ -15,7 +17,7 @@ namespace ProjectVcode.TestsAPI
 
         [TestCase("TP")]
         [Description("Get All test cases - Positive")]
-        public void GetAllTestCasesPositive(string projectCode)
+        public void GetAllCasesPositive(string projectCode)
         {   
             var response = SetAndExecute.Request(BaseUrl, $"{CasesUrl}{projectCode}", Method.Get);
 
@@ -34,7 +36,7 @@ namespace ProjectVcode.TestsAPI
 
         [TestCase("TP", "APITestCase2")]
         [Description("Create test case - Positive")]
-        public void CreateTestCasePositive(string projectCode, string caseTitle)
+        public void CreateCasePositive(string projectCode, string caseTitle)
         {
             var requestBody = new CreateCaseRequestBuilder()
                                     .Title($"{caseTitle}")
@@ -52,7 +54,7 @@ namespace ProjectVcode.TestsAPI
 
         [TestCase("TPPPPP1", "APITestCase1")]
         [Description("Create test case - Negative")]
-        public void CreateTestCaseNegative(string projectCode, string caseTitle)
+        public void CreateCaseNegative(string projectCode, string caseTitle)
         {
             var requestBody = new CreateCaseRequestBuilder()
                                     .Title($"{caseTitle}")
@@ -71,7 +73,7 @@ namespace ProjectVcode.TestsAPI
 
         [TestCase("TP", 7)]
         [Description("Get test case - Positive")]
-        public void GetTestCasePositive(string projectCode, int testCaseId)
+        public void GetCasePositive(string projectCode, int testCaseId)
         {
             var response = SetAndExecute.Request(BaseUrl, $"{CasesUrl}{projectCode}/{testCaseId}", Method.Get);
 
@@ -89,7 +91,7 @@ namespace ProjectVcode.TestsAPI
 
         [TestCase("TP", 0)]
         [Description("Get test case - Negative")]
-        public void GetTestCaseNegative(string projectCode, int testCaseId)
+        public void GetCaseNegative(string projectCode, int testCaseId)
         {
             var response = SetAndExecute.Request(BaseUrl, $"{CasesUrl}{projectCode}/{testCaseId}", Method.Get);
 
@@ -105,7 +107,7 @@ namespace ProjectVcode.TestsAPI
 
         [TestCase("TP", 10)]
         [Description("Delete test case - Positive")]
-        public void DeleteTestCasePositive(string projectCode, int testCaseId)
+        public void DeleteCasePositive(string projectCode, int testCaseId)
         {
             var response = SetAndExecute.Request(BaseUrl, $"{CasesUrl}{projectCode}/{testCaseId}", Method.Delete);
 
@@ -121,7 +123,7 @@ namespace ProjectVcode.TestsAPI
 
         [TestCase("TP", 10)]
         [Description("Delete test case - Negative")]
-        public void DeleteTestCaseNegative(string projectCode, int testCaseId)
+        public void DeleteCaseNegative(string projectCode, int testCaseId)
         {
             var response = SetAndExecute.Request(BaseUrl, $"{CasesUrl}{projectCode}/{testCaseId}", Method.Delete);
 
@@ -137,7 +139,7 @@ namespace ProjectVcode.TestsAPI
 
         [TestCase("TP", 11, "UpdatedTestCaseNameAPI")]
         [Description("Update test case - Positive")]
-        public void UpdateTestCasePositive(string projectCode, int testCaseId, string caseTitle)
+        public void UpdateCasePositive(string projectCode, int testCaseId, string caseTitle)
         {
             var requestBody = new UpdateCaseRequestBuilder()
                                     .Title($"{caseTitle}")
@@ -146,7 +148,7 @@ namespace ProjectVcode.TestsAPI
 
             Assert.That((int)response.StatusCode, Is.EqualTo(200));
 
-            var modelResponse = JsonConvert.DeserializeObject<DeleteCaseResponse>(response.Content);
+            var modelResponse = JsonConvert.DeserializeObject<UpdateCaseResponse>(response.Content);
             var jsonResponse = JObject.Parse(response.Content);
 
             Console.WriteLine("{0}", jsonResponse);
@@ -156,7 +158,7 @@ namespace ProjectVcode.TestsAPI
 
         [TestCase("TP", 99, "UpdatedTestCaseNameAPI")]
         [Description("Update test case - Negative")]
-        public void UpdateTestCaseNegative(string projectCode, int testCaseId, string caseTitle)
+        public void UpdateCaseNegative(string projectCode, int testCaseId, string caseTitle)
         {
             var requestBody = new UpdateCaseRequestBuilder()
                                     .Title($"{caseTitle}")
@@ -165,7 +167,7 @@ namespace ProjectVcode.TestsAPI
 
             Assert.That((int)response.StatusCode, Is.EqualTo(404));
 
-            var modelResponse = JsonConvert.DeserializeObject<DeleteCaseResponse>(response.Content);
+            var modelResponse = JsonConvert.DeserializeObject<UpdateCaseResponse>(response.Content);
             var jsonResponse = JObject.Parse(response.Content);
 
             Console.WriteLine("{0}", jsonResponse);
