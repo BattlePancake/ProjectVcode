@@ -43,7 +43,7 @@ namespace ProjectVcode.Elements
 
         public void ClearField()
         {
-            for(int a = 0; a < 5; a++)
+            for(int a = 0; a < 10; a++)
             {
                 FindWebElement.SendKeys(Keys.Backspace);
             }
