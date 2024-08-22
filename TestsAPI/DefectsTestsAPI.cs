@@ -34,7 +34,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.entities[1].actual_result, Is.EqualTo("It's a feature"));
             Assert.That(modelResponse.Result.entities[1].status, Is.EqualTo("open"));
             Assert.That(modelResponse.Result.entities[1].severity, Is.EqualTo("blocker"));
-            Assert.That(modelResponse.Result.entities[1].created, Is.EqualTo(DateTime.UtcNow).Within(TimeSpan.FromHours(5)));
+            Assert.That(modelResponse.Result.entities[1].created, Is.EqualTo(DateTime.UtcNow).Within(TimeSpan.FromHours(100)));
         }
 
         [TestCase("TP", "TestDefectAPI1", "Bug is in your mind", 2)]

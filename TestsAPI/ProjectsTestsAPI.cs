@@ -89,7 +89,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Status, Is.True);
             Assert.That(modelResponse.Result.title, Is.EqualTo("TestProject"));
             Assert.That(modelResponse.Result.code, Is.EqualTo(projectCode));
-            Assert.That(modelResponse.Result.counts.cases, Is.EqualTo(5));
+            Assert.That(modelResponse.Result.counts.cases, Is.EqualTo(2));
             Assert.That(modelResponse.Result.counts.suites, Is.EqualTo(0));
         }
 

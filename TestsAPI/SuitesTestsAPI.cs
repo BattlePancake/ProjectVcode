@@ -104,7 +104,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.ErrorMessage, Is.EqualTo("Suite not found"));
         }
 
-        [TestCase("DEMO", 5)]
+        [TestCase("DEMO", 9)]
         [Description("Delete Suite - Positive")]
         public void DeleteSuitePositive(string projectCode, int suiteId)
         {
