@@ -8,14 +8,14 @@ namespace ProjectVcode.Tests
     [AllureNUnit]
     internal class ProjectsPageTest : BaseTest
     {
-        [TestCase("NewTestProjectOne", "NTPO")]
+        [TestCase("NewTestProjectOne", "NTPO", "")]
         [Description("User1 - Create new project and check created project name - positive test")]
-        public void CreateProjectUser1Positive(string name, string code)
+        public void CreateProjectUser1Positive(string name, string code, string description)
         {
             LoginPage.FastLogin(Consts.UserOneEmail, Consts.UserOnePass);
 
             NewProjectForm newProjectForm = new();
-            Project project = new Project(name, code);
+            Project project = new Project(name, code, description);
 
             newProjectForm.CreateNewProject()
                           .FillRadioButtons(1, 1)
@@ -25,14 +25,14 @@ namespace ProjectVcode.Tests
             Assert.That(InProjectPage.CheckProjectNames(project), Is.True);
         }
 
-        [TestCase("NewTestProjectTwo", "NTPW")]
+        [TestCase("NewTestProjectTwo", "NTPW", "")]
         [Description("User2 - Create new project and check created project name - positive test")]
-        public void CreateProjectUser2Positive(string name, string code)
+        public void CreateProjectUser2Positive(string name, string code, string description)
         {
             LoginPage.FastLogin(Consts.UserTwoEmail, Consts.UserTwoPass);
 
             NewProjectForm newProjectForm = new();
-            Project project = new Project(name, code);
+            Project project = new Project(name, code, description);
 
             newProjectForm.CreateNewProject()
                           .FillRadioButtons(1, 1)
