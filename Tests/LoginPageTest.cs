@@ -17,7 +17,7 @@ namespace ProjectVcode.Tests
             Assert.That(ProfileMenu.CheckProfileName(nameId), Is.True);
         }
 
-        [TestCase("vladsivograkovwork@gmail.com", "ewq1edc2esz3!Q", 2)]
+        [TestCase("vladsivograkovwork@gmail.com", "ewq1edc2esz3Q!", 2)]
         [Description("Sign in and profile name2 check - positive test")]
         public void SignInPositive2(string email, string password, int nameId)
         {
