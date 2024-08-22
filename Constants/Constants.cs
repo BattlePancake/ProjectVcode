@@ -19,8 +19,8 @@
         public const string ErrorMessage2 = " does not match format email of type string";
 
         //  Profile page constants:
-        public const string ProfileFirstName1 = "Vlad";
-        public const string ProfileFirstName2 = "Bread";
+        public const string ProfileFirstName1 = "Bread";
+        public const string ProfileFirstName2 = "Vlad";
         public const string ProfileFirstName3 = "1TestName1";
 
         //  Create Case page constants:
