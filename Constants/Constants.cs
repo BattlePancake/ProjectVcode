@@ -14,14 +14,9 @@
 
         //  Login page constants:
         public const string LoginFieldsRequiredError = "This field is required";
-
         public const string InvalidCredentialsError = "These credentials do not match our records.";
-
         public const string ErrorMessage1 = "Value ";
         public const string ErrorMessage2 = " does not match format email of type string";
-
-        //  Projects page constants:
-
 
         //  Profile page constants:
         public const string ProfileFirstName1 = "Vlad";

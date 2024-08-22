@@ -6,19 +6,19 @@ namespace ProjectVcode.Pages
 {
     internal class NewProjectForm : BasePage
     {
-        public static Element _projectNameField = new(By.XPath("//*[@id='project-name']"));
-        public static Element _projectCodeField = new(By.XPath("//*[@id='project-code']"));
-        public static Element _descriptionField = new(By.XPath("//*[@id='description-area']"));
+        private static Element _projectNameField = new(By.XPath("//*[@id='project-name']"));
+        private static Element _projectCodeField = new(By.XPath("//*[@id='project-code']"));
+        private static Element _descriptionField = new(By.XPath("//*[@id='description-area']"));
 
-        public static Element _privateRadioButton = new(By.XPath("//*[text()='Private']"));
-        public static Element _publicRadioButton = new(By.XPath("//*[text()='Public']"));
-        public static Element _allMembersRadioButton = new(By.XPath("//*[text()='Add all members to this project']"));
+        private static Element _privateRadioButton = new(By.XPath("//*[text()='Private']"));
+        private static Element _publicRadioButton = new(By.XPath("//*[text()='Public']"));
+        private static Element _allMembersRadioButton = new(By.XPath("//*[text()='Add all members to this project']"));
 
-        public static Element _groupAccessRadioButton = new(By.XPath("//*[text()='Group access']"));
-        public static Element _noMembersRadioButton = new(By.XPath("//*[text()='Don't add members']"));
+        private static Element _groupAccessRadioButton = new(By.XPath("//*[text()='Group access']"));
+        private static Element _noMembersRadioButton = new(By.XPath("//*[text()='Don't add members']"));
 
-        public static Element _createProjectButton = new(By.XPath("//*[@class='pfDFL9']//button[2]"));
-        public static Element _cancelButton = new(By.XPath("//*[@class='pfDFL9']//button[1]"));
+        private static Element _createProjectButton = new(By.XPath("//*[@class='pfDFL9']//button[2]"));
+        private static Element _cancelButton = new(By.XPath("//*[@class='pfDFL9']//button[1]"));
 
         public NewProjectForm CreateNewProject()
         {

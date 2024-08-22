@@ -6,14 +6,14 @@ namespace ProjectVcode.Pages
 {
     internal class ProjectsPage : BasePage
     {
-        public static Element _loadedText = new(By.XPath("//*[@class='P3tqoY']//th[3]//div//div"));
+        private static Element _loadedText = new(By.XPath("//*[@class='P3tqoY']//th[3]//div//div"));
+        
+        private static Element _statusSortButton = new(By.XPath("//*[@class='i1gltl']//div//div//div[2]"));
+
+        private static Element _deleteProjectButton = new(By.XPath("//*[text()='Remove']"));
+        private static Element _deleteProjectConfirmationButton = new(By.XPath("//*[@class='Wuj713']//button[2]"));
 
         public static Element _createNewProjectButton = new(By.XPath("//*[@id='createButton']"));
-        public static Element _statusSortButton = new(By.XPath("//*[@class='i1gltl']//div//div//div[2]"));
-
-        public static Element _deleteProjectButton = new(By.XPath("//*[text()='Remove']"));
-        public static Element _deleteProjectConfirmationButton = new(By.XPath("//*[@class='Wuj713']//button[2]"));
-
         public static Element ProjectNameTitle(string name) => new(By.XPath($"//*[text()='{name}']"));
         public static void ChooseProjectByName(string name) => ClickOnElement(ProjectNameTitle(name));
         public static bool CheckProjectExists(Project project)
@@ -35,8 +35,7 @@ namespace ProjectVcode.Pages
             ProjectNumberThreeDot(num).ClickElement();
             ClickOnElement(_deleteProjectButton);
             ClickOnElement(_deleteProjectConfirmationButton);
-            ClickOnElement(_statusSortButton);  //  Добавлено для того, чтобы анимация удаления проекта успела сработать и
-            ClickOnElement(_statusSortButton);  //  метод CheckProjectExixts искал уже удалённый проект (вместо thread.sleep)
+            ClickOnElement(_statusSortButton);  //  animation
         }
 
         public static bool CheckPageLoaded()

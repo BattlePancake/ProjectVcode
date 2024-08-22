@@ -11,7 +11,5 @@ namespace ProjectVcode.Pages
         {
             Driver.GetDriver().Navigate().GoToUrl("https://app.qase.io/login");
         }
-
-        //public static void Refresh() => Driver.GetDriver().Navigate().Refresh();
     }
 }

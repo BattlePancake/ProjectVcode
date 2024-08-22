@@ -34,7 +34,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.entities[1].title, Is.EqualTo("Test2Test2Test2"));
         }
 
-        [TestCase("TP", "APITestCase2")]
+        [TestCase("TP", "APIcreatedCase1")]
         [Description("Create test case - Positive")]
         public void CreateCasePositive(string projectCode, string caseTitle)
         {

@@ -8,13 +8,43 @@ namespace ProjectVcode.Tests
     [AllureNUnit]
     internal class ProjectsPageTest : BaseTest
     {
-        //[TestCase("TestProject1", "TP1", "TestDescription1")]
+        [TestCase("NewTestProjectOne", "NTPO")]
+        [Description("User1 - Create new project and check created project name - positive test")]
+        public void CreateProjectUser1Positive(string name, string code)
+        {
+            LoginPage.FastLogin(Consts.UserOneEmail, Consts.UserOnePass);
 
-        //[TestCase("TestProject2", "TP2", "TestDescription2")]
+            NewProjectForm newProjectForm = new();
+            Project project = new Project(name, code);
 
-        [TestCase("TestProject3", "TP3", "TestDescription3")]
-        [Description("Create new project and check created project name - positive test")]
-        public void ProjectPageTest1(string name, string code, string description)
+            newProjectForm.CreateNewProject()
+                          .FillRadioButtons(1, 1)
+                          .FillTheForm(project)
+                          .ClickCreateProjectButton();
+
+            Assert.That(InProjectPage.CheckProjectNames(project), Is.True);
+        }
+
+        [TestCase("NewTestProjectTwo", "NTPW")]
+        [Description("User2 - Create new project and check created project name - positive test")]
+        public void CreateProjectUser2Positive(string name, string code)
+        {
+            LoginPage.FastLogin(Consts.UserTwoEmail, Consts.UserTwoPass);
+
+            NewProjectForm newProjectForm = new();
+            Project project = new Project(name, code);
+
+            newProjectForm.CreateNewProject()
+                          .FillRadioButtons(1, 1)
+                          .FillTheForm(project)
+                          .ClickCreateProjectButton();
+
+            Assert.That(InProjectPage.CheckProjectNames(project), Is.True);
+        }
+
+        [TestCase("NewTestProjectThree", "NTPT", "CreatedDescription")]
+        [Description("User3 - Create new project and check created project name - positive test")]
+        public void CreateProjectUser3Positive(string name, string code, string description)
         {
             LoginPage.FastLogin(Consts.UserThreeEmail, Consts.UserThreePass);
 
@@ -29,9 +59,9 @@ namespace ProjectVcode.Tests
             Assert.That(InProjectPage.CheckProjectNames(project), Is.True);
         }
 
-        [TestCase("TestProject3", 3)]
+        [TestCase("NewTestProjectThree", 3)]
         [Description("Delete existing project and check that no name existing - positive test")]
-        public void ProjectPageTest2(string name, int id)
+        public void DeleteProjectPositive(string name, int id)
         {
             LoginPage.FastLogin(Consts.UserThreeEmail, Consts.UserThreePass);
 
@@ -41,9 +71,9 @@ namespace ProjectVcode.Tests
             Assert.That(ProjectsPage.CheckProjectExists(project), Is.False);
         }
 
-        [TestCase("TestProject10", "TP10", "")]
+        [TestCase("TestProject10", "TP10", "CreatedTestDescription")]
         [Description("Fill the form and cancel, check no project was created - negative test")]
-        public void ProjectPageTest3(string name, string code, string description)
+        public void CreateProjectNegative(string name, string code, string description)
         {
             LoginPage.FastLogin(Consts.UserThreeEmail, Consts.UserThreePass);
 

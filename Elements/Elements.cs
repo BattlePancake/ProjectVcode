@@ -48,6 +48,5 @@ namespace ProjectVcode.Elements
                 FindWebElement.SendKeys(Keys.Backspace);
             }
         }
-
     }
 }
