@@ -14,7 +14,7 @@ namespace ProjectVcode.TestsAPI
         private const string BaseUrl = "https://api.qase.io/v1/";
         private const string ProjectsUrl = "suite";
 
-        [TestCase("DEMO")]
+        [TestCase("DEMO"), Order(1)]
         [Description("Get All suites - Positive")]
         public void GetAllSuitesPositive(string projectCode)
         {
@@ -33,7 +33,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.entities[0].cases_count, Is.EqualTo(4));
         }
 
-        [TestCase("DEMO", "TestAPISuite1")]
+        [TestCase("DEMO", "TestAPISuite1"), Order(2)]
         [Description("Create Suite - Positive")]
         public void CreateSuitePositive(string projectCode, string suiteTitle)
         {
@@ -51,7 +51,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Status, Is.True);
         }
 
-        [TestCase("1", "1")]
+        [TestCase("1", "1"), Order(3)]
         [Description("Create Suite - Positive")]
         public void CreateSuiteNegative(string projectCode, string suiteTitle)
         {
@@ -70,7 +70,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.ErrorMessage, Is.EqualTo("Project not found"));
         }
 
-        [TestCase("DEMO", 3)]
+        [TestCase("DEMO", 3), Order(4)]
         [Description("Get Suite - Positive")]
         public void GetSuitePositive(string projectCode, int suiteId)
         {
@@ -88,7 +88,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.cases_count, Is.EqualTo(3));
         }
 
-        [TestCase("DEMO", 99)]
+        [TestCase("DEMO", 99), Order(5)]
         [Description("Get Suite - Negative")]
         public void GetSuiteNegative(string projectCode, int suiteId)
         {
@@ -104,7 +104,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.ErrorMessage, Is.EqualTo("Suite not found"));
         }
 
-        [TestCase("DEMO", 9)]
+        [TestCase("DEMO", 9), Order(6)]
         [Description("Delete Suite - Positive")]
         public void DeleteSuitePositive(string projectCode, int suiteId)
         {
@@ -119,7 +119,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Status, Is.True);
         }
 
-        [TestCase("DEMO", 5)]
+        [TestCase("DEMO", 5), Order(7)]
         [Description("Delete Suite - Negative")]
         public void DeleteSuiteNegative(string projectCode, int suiteId)
         {
@@ -135,7 +135,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.ErrorMessage, Is.EqualTo("Suite not found"));
         }
 
-        [TestCase("DEMO", 3, "UpdateSuiteTitleAPI")]
+        [TestCase("DEMO", 3, "UpdateSuiteTitleAPI"), Order(8)]
         [Description("Update Suite - Positive")]
         public void UpdateSuitePositive(string projectCode, int suiteId, string suiteTitle)
         {
@@ -154,7 +154,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.id, Is.EqualTo(3));
         }
 
-        [TestCase("DEMO", 99, "UpdateSuiteTitleAPI")]
+        [TestCase("DEMO", 99, "UpdateSuiteTitleAPI"), Order(9)]
         [Description("Update Suite - Negative")]
         public void UpdateSuiteNegative(string projectCode, int suiteId, string suiteTitle)
         {

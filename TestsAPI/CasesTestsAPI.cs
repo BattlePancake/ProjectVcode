@@ -15,7 +15,7 @@ namespace ProjectVcode.TestsAPI
         private const string BaseUrl = "https://api.qase.io/v1/";
         private const string CasesUrl = "case/";
 
-        [TestCase("TP")]
+        [TestCase("TP"), Order(1)]
         [Description("Get All test cases - Positive")]
         public void GetAllCasesPositive(string projectCode)
         {   
@@ -34,7 +34,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.entities[1].title, Is.EqualTo("Test2Test2Test2"));
         }
 
-        [TestCase("TP", "APIcreatedCase1")]
+        [TestCase("TP", "APIcreatedCase1"), Order(2)]
         [Description("Create test case - Positive")]
         public void CreateCasePositive(string projectCode, string caseTitle)
         {
@@ -52,7 +52,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Status, Is.True);
         }
 
-        [TestCase("TPPPPP1", "APITestCase1")]
+        [TestCase("TPPPPP1", "APITestCase1"), Order(3)]
         [Description("Create test case - Negative")]
         public void CreateCaseNegative(string projectCode, string caseTitle)
         {
@@ -71,7 +71,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.ErrorMessage, Is.EqualTo("Project not found"));
         }
 
-        [TestCase("TP", 1)]
+        [TestCase("TP", 1), Order(4)]
         [Description("Get test case - Positive")]
         public void GetCasePositive(string projectCode, int testCaseId)
         {
@@ -89,7 +89,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.title, Is.EqualTo("TestTestTest"));
         }
 
-        [TestCase("TP", 0)]
+        [TestCase("TP", 0), Order(5)]
         [Description("Get test case - Negative")]
         public void GetCaseNegative(string projectCode, int testCaseId)
         {
@@ -105,7 +105,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.ErrorMessage, Is.EqualTo("TestCase not found"));
         }
 
-        [TestCase("TP", 22)]
+        [TestCase("TP", 22), Order(6)]
         [Description("Delete test case - Positive")]
         public void DeleteCasePositive(string projectCode, int testCaseId)
         {
@@ -121,7 +121,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.id, Is.EqualTo(testCaseId));
         }
 
-        [TestCase("TP", 10)]
+        [TestCase("TP", 10), Order(7)]
         [Description("Delete test case - Negative")]
         public void DeleteCaseNegative(string projectCode, int testCaseId)
         {
@@ -137,7 +137,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.ErrorMessage, Is.EqualTo("TestCase not found"));
         }
 
-        [TestCase("TP", 1, "UpdatedTestCaseNameAPI")]
+        [TestCase("TP", 1, "UpdatedTestCaseNameAPI"), Order(8)]
         [Description("Update test case - Positive")]
         public void UpdateCasePositive(string projectCode, int testCaseId, string caseTitle)
         {
@@ -156,7 +156,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.id, Is.EqualTo(testCaseId));
         }
 
-        [TestCase("TP", 99, "UpdatedTestCaseNameAPI")]
+        [TestCase("TP", 99, "UpdatedTestCaseNameAPI"), Order(9)]
         [Description("Update test case - Negative")]
         public void UpdateCaseNegative(string projectCode, int testCaseId, string caseTitle)
         {

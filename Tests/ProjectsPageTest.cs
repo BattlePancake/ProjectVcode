@@ -8,7 +8,7 @@ namespace ProjectVcode.Tests
     [AllureNUnit]
     internal class ProjectsPageTest : BaseTest
     {
-        [TestCase("NewTestProjectOne", "NTPO", "")]
+        [TestCase("NewTestProjectOne", "NTPO", ""), Order(1)]
         [Description("User1 - Create new project and check created project name - positive test")]
         public void CreateProjectUser1Positive(string name, string code, string description)
         {
@@ -25,7 +25,7 @@ namespace ProjectVcode.Tests
             Assert.That(InProjectPage.CheckProjectNames(project), Is.True);
         }
 
-        [TestCase("NewTestProjectTwo", "NTPW", "")]
+        [TestCase("NewTestProjectTwo", "NTPW", ""), Order(2)]
         [Description("User2 - Create new project and check created project name - positive test")]
         public void CreateProjectUser2Positive(string name, string code, string description)
         {
@@ -42,7 +42,7 @@ namespace ProjectVcode.Tests
             Assert.That(InProjectPage.CheckProjectNames(project), Is.True);
         }
 
-        [TestCase("NewTestProjectThree", "NTPT", "CreatedDescription")]
+        [TestCase("NewTestProjectThree", "NTPT", "CreatedDescription"), Order(3)]
         [Description("User3 - Create new project and check created project name - positive test")]
         public void CreateProjectUser3Positive(string name, string code, string description)
         {
@@ -59,7 +59,7 @@ namespace ProjectVcode.Tests
             Assert.That(InProjectPage.CheckProjectNames(project), Is.True);
         }
 
-        [TestCase("NewTestProjectThree", 3)]
+        [TestCase("NewTestProjectThree", 3), Order(4)]
         [Description("Delete existing project and check that no name existing - positive test")]
         public void DeleteProjectPositive(string name, int id)
         {
@@ -71,7 +71,7 @@ namespace ProjectVcode.Tests
             Assert.That(ProjectsPage.CheckProjectExists(project), Is.False);
         }
 
-        [TestCase("TestProject10", "TP10", "CreatedTestDescription")]
+        [TestCase("TestProject10", "TP10", "CreatedTestDescription"), Order(5)]
         [Description("Fill the form and cancel, check no project was created - negative test")]
         public void CreateProjectNegative(string name, string code, string description)
         {

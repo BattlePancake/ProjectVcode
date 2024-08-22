@@ -8,7 +8,7 @@ namespace ProjectVcode.Tests
     [AllureNUnit]
     internal class InProjectPageTest : BaseTest
     {
-        [TestCase("CreatedTestCase1", 4, "TestProject")]
+        [TestCase("CreatedTestCase1", 4, "TestProject"), Order(1)]
         [Description("Create new case and check its name - positive test")]
         public void CreateCasePositive(string caseName, int caseId, string projectName)
         {
@@ -22,7 +22,7 @@ namespace ProjectVcode.Tests
             Assert.That(InProjectPage.GetCaseName(caseId), Is.EqualTo(testCase.CaseName));
         }
 
-        [TestCase("CreatedTestCase1", 4, "TestProject")]
+        [TestCase("CreatedTestCase1", 4, "TestProject"), Order(2)]
         [Description("Delete existing case and check its name doesn't exist - positive test")]
         public void DeleteCasePositive(string caseName, int caseId, string projectName)
         {
@@ -36,7 +36,7 @@ namespace ProjectVcode.Tests
             Assert.That(InProjectPage.CheckNoCaseExisting(testCase), Is.False);
         }
 
-        [TestCase("CreatedTestCase99", 4, "TestProject")]
+        [TestCase("CreatedTestCase99", 4, "TestProject"), Order(3)]
         [Description("Fill the form and cancel, check no case was created - negative test")]
         public void CreateCaseNegative(string caseName, int caseId, string projectName)
         {

@@ -15,7 +15,7 @@ namespace ProjectVcode.TestsAPI
         private const string BaseUrl = "https://api.qase.io/v1/";
         private const string ProjectsUrl = "defect";
 
-        [TestCase("DEMO")]
+        [TestCase("DEMO"), Order(1)]
         [Description("Get All defects - Positive")]
         public void AllDefectstPositive(string projectCode)
         {
@@ -37,7 +37,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.entities[1].created, Is.EqualTo(DateTime.UtcNow).Within(TimeSpan.FromHours(100)));
         }
 
-        [TestCase("TP", "TestDefectAPI1", "Bug is in your mind", 2)]
+        [TestCase("TP", "TestDefectAPI1", "Bug is in your mind", 2), Order(2)]
         [Description("Create project - Positive")]
         public void CreateProjectPositive(string projectCode, string defectTitle, string actual_result, int severity)
         {

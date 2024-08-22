@@ -14,7 +14,7 @@ namespace ProjectVcode.TestsAPI
         private const string BaseUrl = "https://api.qase.io/v1/";
         private const string ProjectsUrl = "project";
 
-        [Test]
+        [Test, Order(1)]
         [Description("Get All projects - Positive")]
         public void GetAllProjectsPositive()
         {
@@ -34,7 +34,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.entities[0].counts.suites, Is.EqualTo(3));
         }
 
-        [TestCase("NewAPIProject", "NAP", "")]
+        [TestCase("NewAPIProject", "NAP", ""), Order(2)]
         [Description("Create project - Positive")]
         public void CreateProjectPositive(string projectTitle, string projectCode, string description)
         {
@@ -54,7 +54,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.code, Is.EqualTo(projectCode));
         }
 
-        [TestCase("NewAPIProject", "1")]
+        [TestCase("NewAPIProject", "1"), Order(3)]
         [Description("Create project - Negative")]
         public void CreateProjectNegative(string projectTitle, string projectCode)
         {
@@ -74,7 +74,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.ErrorMessage, Is.EqualTo("Data is invalid."));
         }
 
-        [TestCase("TP")]
+        [TestCase("TP"), Order(4)]
         [Description("Get project - Positive")]
         public void GetProjectPositive(string projectCode)
         {
@@ -93,7 +93,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Result.counts.suites, Is.EqualTo(0));
         }
 
-        [TestCase("2")]
+        [TestCase("2"), Order(5)]
         [Description("Get project - Negative")]
         public void GetProjectNegative(string projectCode)
         {
@@ -109,7 +109,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.ErrorMessage, Is.EqualTo("Project not found"));
         }
 
-        [TestCase("NAP")]
+        [TestCase("NAP"), Order(6)]
         [Description("Delete project - Positive")]
         public void DeleteProjectPositive(string projectCode)
         {
@@ -124,7 +124,7 @@ namespace ProjectVcode.TestsAPI
             Assert.That(modelResponse.Status, Is.True);
         }
 
-        [TestCase("1")]
+        [TestCase("1"), Order(7)]
         [Description("Delete project - Negative")]
         public void DeleteProjectNegative(string projectCode)
         {
